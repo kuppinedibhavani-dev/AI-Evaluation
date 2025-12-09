@@ -4,7 +4,7 @@ Track your daily activities in minutes and visualise how your 24 hours are spent
 
 ## 🔗 Live Demo
 
-- Deployed Link: 
+- Deployed Link:https://kuppinedibhavani-dev.github.io/AI-Evaluation/ 
 - GitHub Repo: https://github.com/kuppinedibhavani-dev/AI-Evaluation
 - Video Walkthrough: https://drive.google.com/drive/folders/1zKhZIfgOSVX0OTBjkahoSSNrGpf9J3lT?usp=sharing
 
