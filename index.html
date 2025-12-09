@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TimeMind – AI Powered Daily Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Landing / Auth Section -->
+  <section id="landing-section" class="full-page centered">
+    <div class="card auth-card">
+      <h1>TimeMind ⏱</h1>
+      <p class="subtitle">Understand your 24 hours with smart analytics.</p>
+
+      <div id="auth-forms">
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+        <div class="auth-actions">
+          <button id="login-btn">Login</button>
+          <button id="signup-btn" class="ghost">Create Account</button>
+        </div>
+      </div>
+
+      <p class="hint">Your data is securely stored with Firebase.</p>
+    </div>
+  </section>
+
+  <!-- Main App Section -->
+  <section id="app-section" class="hidden">
+    <header class="app-header">
+      <div>
+        <h2>TimeMind Dashboard</h2>
+        <p id="user-email"></p>
+      </div>
+      <button id="logout-btn">Logout</button>
+    </header>
+
+    <main class="layout">
+      <!-- Left: Activity Input -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Log Activities</h3>
+          <input type="date" id="date-picker" />
+        </div>
+
+        <p id="remaining-text">You have 1440 minutes left for this day.</p>
+
+        <form id="activity-form" class="activity-form">
+          <input type="text" id="activity-name" placeholder="Activity name" required />
+          <select id="activity-category">
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Sleep">Sleep</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Exercise">Exercise</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="number" id="activity-duration" min="1" max="1440" placeholder="Minutes" required />
+          <button type="submit">Save</button>
+        </form>
+
+        <div id="activity-list" class="activity-list">
+          <!-- Activities rendered here -->
+        </div>
+      </div>
+
+      <!-- Right: Analytics -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Daily Analytics</h3>
+          <button id="analyse-btn" disabled>Analyse</button>
+        </div>
+
+        <!-- No data view -->
+        <div id="no-data-view" class="no-data">
+          <div class="emoji">📭</div>
+          <h4>No data available</h4>
+          <p>Select a date and start logging your day to see insights here.</p>
+          <p class="hint">Once you add activities, click “Analyse” to view the dashboard.</p>
+        </div>
+
+        <!-- Dashboard view -->
+        <div id="dashboard-view" class="hidden">
+          <div class="stats">
+            <div class="stat-card">
+              <span>Total Time</span>
+              <strong id="total-time-text">0 h</strong>
+            </div>
+            <div class="stat-card">
+              <span>Activities</span>
+              <strong id="activity-count-text">0</strong>
+            </div>
+          </div>
+
+          <div class="chart-wrapper">
+            <h4>Time per Category</h4>
+            <canvas id="category-chart"></canvas>
+          </div>
+
+          <div class="chart-wrapper mt">
+            <h4>Activity Durations</h4>
+            <canvas id="activity-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+
+  <!-- Firebase SDKs (Compat for simplicity) -->
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
